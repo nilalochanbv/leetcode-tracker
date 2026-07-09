@@ -1,0 +1,28 @@
+// Last updated: 7/9/2026, 9:48:39 AM
+class Solution {
+    public boolean isVowel(char ch){
+        ch=Character.toLowerCase(ch);
+        return ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u';
+    }
+    public String reverseVowels(String s) {
+        char[] arr =s.toCharArray();
+        int left=0;
+        int right=arr.length-1;
+
+        while(left<right){
+            while(left<right && !isVowel(arr[left])){
+                left++;
+            }
+            while(left<right && !isVowel(arr[right])){
+                right--;
+            }
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            left++;
+            right--;
+        }
+        return new String(arr);
+    }
+}
